@@ -22,9 +22,9 @@ int	main(int argc, char **argv)
 	int		fd;
 
 	if (argc != 2)
-		return (printf("Error. Wrong Input\n"), 1);
+		return (printf("Error\nWrong Input\n"), 1);
 	if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".cub", 4) != 0)
-		return (printf("Error. Wrong File Type\n"), 1);
+		return (printf("Error\nWrong File Type\n"), 1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (perror("Error\n"), 1);

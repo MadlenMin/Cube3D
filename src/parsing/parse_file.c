@@ -2,17 +2,17 @@
 
 static int	parse_cfg(char *s, t_data *d)
 {
-	if (!ft_strncmp(s, "NO", 2))
+	if (!ft_strncmp(s, "NO ", 3))
 		return (parse_tex(&d->no, s + 2));
-	if (!ft_strncmp(s, "SO", 2))
+	if (!ft_strncmp(s, "SO ", 3))
 		return (parse_tex(&d->so, s + 2));
-	if (!ft_strncmp(s, "WE", 2))
+	if (!ft_strncmp(s, "WE ", 3))
 		return (parse_tex(&d->we, s + 2));
-	if (!ft_strncmp(s, "EA", 2))
+	if (!ft_strncmp(s, "EA ", 3))
 		return (parse_tex(&d->ea, s + 2));
-	if (!ft_strncmp(s, "F", 1))
+	if (!ft_strncmp(s, "F ", 2))
 		return (parse_color(&d->floor, s + 1));
-	if (!ft_strncmp(s, "C", 1))
+	if (!ft_strncmp(s, "C ", 2))
 		return (parse_color(&d->ceiling, s + 1));
 	return (err("Unknown identifier"));
 }

@@ -22,7 +22,7 @@ int	parse_tex(char **dst, char *s)
 		return (err("Invalid texture path"));
 	path = ft_substr(s, start, end - start);
 	if (!path || access(path, R_OK))
-		return (err("Invalid texture path"));
+		return (free(path), err("Invalid texture path"));
 	*dst = path;
 	return (0);
 }
