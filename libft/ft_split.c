@@ -76,19 +76,17 @@ char	**ft_split(char *s, char c)
 
 	if (!s)
 		return (NULL);
+
 	len = word_count(s, c);
 	res = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!res)
-	{
-		free(s);
 		return (NULL);
-	}
+
 	if (split(res, s, c, 0) == 0)
 	{
-		free(s);
 		free(res);
 		return (NULL);
 	}
-	free(s);
 	return (res);
 }
+

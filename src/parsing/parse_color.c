@@ -2,21 +2,18 @@
 
 static void	remove_spaces(char *s)
 {
-	int		i;
-	int		j;
-	char	*tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
 		if (s[i] != ' ' && s[i] != '\t')
-			tmp[j++] = s[i];
+			s[j++] = s[i];
 		i++;
 	}
-	tmp[j] = 0;
-	free(s);
-	s = ft_strdup(tmp);
+	s[j] = 0;
 }
 
 static int	numeric(char *s)
@@ -59,7 +56,7 @@ int	parse_color(int *dst, char *s)
 	if (!tmp)
 		return (err("Malloc failed"));
 	remove_spaces(tmp);
-	rgb = ft_split(ft_strdup(tmp), ',');
+	rgb = ft_split(tmp, ',');
 	free(tmp);
 	if (!rgb || ft_arrlen(rgb) != 3)
 		return (ft_free(rgb), err("Invalid color format"));
