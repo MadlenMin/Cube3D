@@ -1,12 +1,10 @@
 NO ./textures/Grass.xpm
 WE ./textures/Egg.xpm
-
 SO ./textures/Water.xpm
-
-F 0,0,0
-C 255,255,255
-
 EA ./textures/Chest.xpm
+
+F 100,10,  0
+C 0,0,0
 
         1111111111111111111111111
         1000000000110000000000001
