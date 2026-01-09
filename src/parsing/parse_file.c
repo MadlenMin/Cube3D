@@ -17,34 +17,6 @@ static int	parse_cfg(char *s, t_data *d)
 	return (err("Unknown identifier"));
 }
 
-void	print_data(t_data *d, int cfg)
-{
-	int	i;
-
-	i = 0;
-	printf("=== CONFIG ===\n");
-printf("cfg: %d\n", cfg);
-	printf("NO: %s\n", d->no ? d->no : "NULL");
-	printf("SO: %s\n", d->so ? d->so : "NULL");
-	printf("WE: %s\n", d->we ? d->we : "NULL");
-	printf("EA: %s\n", d->ea ? d->ea : "NULL");
-	printf("Floor color: 0x%06X\n", d->floor);
-	printf("Ceiling color: 0x%06X\n", d->ceiling);
-	printf("Floor color: %d\n", d->floor);
-	printf("Ceiling color: %d\n", d->ceiling);
-
-	printf("\n=== MAP ===\n");
-	while (d->map && d->map[i])
-	{
-		printf("%s\n", d->map[i]);
-		i++;
-	}
-	printf("\n=== PLAYER ===\n");
-	printf("Position: (%d, %d)\n", d->px, d->py);
-	printf("Direction: %c\n", d->dir);
-	printf("\n\n\n\n\n");
-}
-
 static int	parse_map_line(char *l, t_data *d, int cfg)
 {
 	if (cfg < 6)
@@ -92,6 +64,5 @@ int	parse(int fd, t_data *d, int map_started, int cfg)
 	}
 	if (cfg < 6 || !d->map)
 		return (free(l), err("Missing data"));
-	//print_data(d, cfg);
 	return (free(l), validate_map(d));
 }

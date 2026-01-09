@@ -16,6 +16,33 @@ void	init(t_data *data)
 	data->dir = 0;
 }
 
+// void	print_data(t_data *d)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	printf("=== CONFIG ===\n");
+// 	printf("NO: %s\n", d->no ? d->no : "NULL");
+// 	printf("SO: %s\n", d->so ? d->so : "NULL");
+// 	printf("WE: %s\n", d->we ? d->we : "NULL");
+// 	printf("EA: %s\n", d->ea ? d->ea : "NULL");
+// 	printf("Floor color: 0x%06X\n", d->floor);
+// 	printf("Ceiling color: 0x%06X\n", d->ceiling);
+// 	printf("Floor color: %d\n", d->floor);
+// 	printf("Ceiling color: %d\n", d->ceiling);
+
+// 	printf("\n=== MAP ===\n");
+// 	while (d->map && d->map[i])
+// 	{
+// 		printf("%s\n", d->map[i]);
+// 		i++;
+// 	}
+// 	printf("\n=== PLAYER ===\n");
+// 	printf("Position: (%d, %d)\n", d->px, d->py);
+// 	printf("Direction: %c\n", d->dir);
+// 	printf("\n\n\n");
+// }
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -29,9 +56,13 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (perror("Error\n"), 1);
 	init(&data);
-	if (!parse(fd, &data, 0, 0))
+	if (parse(fd, &data, 0, 0))
 		return (free_data(&data), close(fd), 1);
 	close(fd);
+	printf("File parsed successfully!\nMap is valid.\n\n");
+	printf("==========================================\n");
+	//print_data(&data);
 	//start(&data);
 	free_data(&data);
+	return (0);
 }
