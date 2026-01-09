@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void    init(t_data *data)
+void	init(t_data *data)
 {
 	data->no = NULL;
 	data->so = NULL;
@@ -13,7 +13,7 @@ void    init(t_data *data)
 	data->map_w = 0;
 	data->px = -1;
 	data->py = -1;
-	data->pdir = 0;
+	data->dir = 0;
 }
 
 int	main(int argc, char **argv)
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (perror("Error\n"), 1);
 	init(&data);
-	if (!parse(fd, &data))
+	if (!parse(fd, &data, 0, 0))
 		return (free_data(&data), close(fd), 1);
 	close(fd);
 	//start(&data);

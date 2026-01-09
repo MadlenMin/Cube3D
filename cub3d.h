@@ -50,11 +50,11 @@ typedef struct s_data
 	int     map_w;
 	int     px;
 	int     py;
-	char    pdir;
+	char    dir;
 }	t_data;
 
 
-int		parse(int fd, t_data *d);
+int		parse(int fd, t_data *d, int map_started, int cfg);
 int		parse_color(int *dst, char *s);
 int		parse_tex(char **dst, char *s);
 char	**map_add(char **m, char *l);
@@ -62,10 +62,11 @@ int		err(char *msg);
 void	trim_nl(char *s);
 int		is_map_char(char c);
 int		is_map_line(char *l);
-// int		validate_map(t_data *d);
+int		validate_map(t_data *d);
 // void    start(t_data *data);
 void	free_data(t_data *data);
 void	init(t_data *data);
 void	ft_free(char **arr);
+char	**ft_dup_split(char **map);
 
 #endif

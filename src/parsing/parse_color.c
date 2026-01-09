@@ -59,7 +59,7 @@ int	parse_color(int *dst, char *s)
 	rgb = ft_split(ft_strdup(tmp), ',');
 	free(tmp);
 	if (!rgb || ft_arrlen(rgb) != 3)
-		return (err("Invalid color format"));
+		return (ft_free(rgb), err("Invalid color format"));
 	if (!numeric(rgb[0]) || !numeric(rgb[1]) || !numeric(rgb[2]))
 		return (ft_free(rgb), err("Invalid color format"));
 	r = ft_atoi(rgb[0]);
