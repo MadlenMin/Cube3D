@@ -2,18 +2,21 @@
 
 static void	remove_spaces(char *s)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*tmp;
 
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
 		if (s[i] != ' ' && s[i] != '\t')
-			s[j++] = s[i];
+			tmp[j++] = s[i];
 		i++;
 	}
-	s[j] = 0;
+	tmp[j] = 0;
+	free(s);
+	s = ft_strdup(tmp);
 }
 
 static int	numeric(char *s)
