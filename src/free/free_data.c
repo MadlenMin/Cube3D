@@ -2,6 +2,12 @@
 
 void	free_data(t_data *data)
 {
+	int	i;
+
+	i = 0;
+	while (i < 4)
+		if (data->tex[i].img)
+			mlx_destroy_image(data->mlx, data->tex[i++].img);
 	if (data->no)
 		free(data->no);
 	if (data->so)

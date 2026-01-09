@@ -4,11 +4,12 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLX_PATH = minilibx-linux/
+MLX_PATH = mlx/
 
 MLX_LIB = $(MLX_PATH)libmlx.a
 
-MLX_FLAGS = -lmlx -L$(MLX_PATH) -lm -lz # -lXext -lX11 (for Linux)
+MLX_FLAGS = -lmlx -L$(MLX_PATH) -lXext -lX11 -lm -lz # for Linux
+#MLX_FLAGS = -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_PATH = libft/
 
@@ -25,7 +26,7 @@ OBJECTS = $(CFILES:.c=.o) $(GNL_FILES:.c=.o)
 all: subsystems $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -I$(MLX_PATH) -c -o $@ $<
+	$(CC) $(CFLAGS) -I$(MLX_PATH) -c  $< -o $@
 
 subsystems:
 	@make -C $(MLX_PATH) all
@@ -46,6 +47,6 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette get_next_line libft src $(CFILES)
+	norminette get_next_line libft $(CFILES)
 
 .PHONY: all clean fclean re norm

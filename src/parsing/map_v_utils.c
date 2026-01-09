@@ -34,11 +34,9 @@ static char	**dup_map(char **map, int height, int max_len)
 			free(dup);
 			return (NULL);
 		}
-
 		ft_memset(dup[i], ' ', max_len);
 		ft_memcpy(dup[i], map[i], ft_strlen(map[i]));
 		dup[i][max_len] = '\0';
-
 		i++;
 	}
 	dup[height] = NULL;

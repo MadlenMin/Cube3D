@@ -1,6 +1,6 @@
 NO ./textures/Grass.xpm
 WE ./textures/Egg.xpm
-SO ./textures/Water.xpm
+SO ./textures/Cow.xpm
 EA ./textures/Chest.xpm
 
 F 100,10,  0
