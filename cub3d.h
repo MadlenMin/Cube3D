@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <sys/time.h>
 
 typedef struct s_keys
 {
@@ -121,6 +120,7 @@ int		key_press(int keycode, t_data *data);
 int		key_release(int keycode, t_data *data);
 int		close_window(t_data *data);
 int		render_frame(t_data *data);
+void	assign_direction(t_data *d);
 
 /* Movement */
 void	move_forward(t_data *data);

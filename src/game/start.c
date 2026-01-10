@@ -1,68 +1,33 @@
 #include "../../cub3d.h"
 
-static void	set_dir(t_data *data)
+static void	init_mlx(t_data *d)
 {
-	if (data->dir == 'N')
-	{
-		data->dir_x = 0;
-		data->dir_y = -1;
-		data->plane_x = 0.66;
-		data->plane_y = 0;
-	}
-	else if (data->dir == 'S')
-	{
-		data->dir_x = 0;
-		data->dir_y = 1;
-		data->plane_x = -0.66;
-		data->plane_y = 0;
-	}
-	else if (data->dir == 'E')
-	{
-		data->dir_x = 1;
-		data->dir_y = 0;
-		data->plane_x = 0;
-		data->plane_y = 0.66;
-	}
-	else if (data->dir == 'W')
-	{
-		data->dir_x = -1;
-		data->dir_y = 0;
-		data->plane_x = 0;
-		data->plane_y = -0.66;
-	}
+	d->mlx = mlx_init();
+	if (!d->mlx)
+		exit(1);
+	d->win = mlx_new_window(d->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	if (!d->win)
+		exit(1);
+	d->img = mlx_new_image(d->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	d->addr = mlx_get_data_addr(d->img, &d->bpp, &d->line_length, &d->endian);
 }
 
-void	start(t_data *data)
+static void	init_player(t_data *d)
 {
-	struct timeval	time;
+	d->pos_x = d->px + 0.5;
+	d->pos_y = d->py + 0.5;
+	d->map[d->py][d->px] = '0';
+	assign_direction(d);
+	d->move_speed = 0.5;
+	d->rot_speed = 0.5;
+	ft_memset(&d->keys, 0, sizeof(t_keys));
+}
 
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		exit(1);
-	data->win = mlx_new_window(
-			data->mlx,
-			SCREEN_WIDTH,
-			SCREEN_HEIGHT,
-			"cub3D");
-	if (!data->win)
-		exit(1);
-	load_all_textures(data);
-	data->img = mlx_new_image(
-			data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	data->addr = mlx_get_data_addr(
-			data->img,
-			&data->bpp,
-			&data->line_length,
-			&data->endian);
-	ft_memset(&data->keys, 0, sizeof(t_keys));
-	data->pos_x = data->px + 0.5;
-	data->pos_y = data->py + 0.5;
-	data->map[data->py][data->px] = '0';
-	set_dir(data);
-	data->move_speed = 0.5;
-	data->rot_speed = 0.5;
-	gettimeofday(&time, NULL);
-	data->old_time = time.tv_sec + time.tv_usec / 1000000.0;
-	init_hooks(data);
-	mlx_loop(data->mlx);
+void	start(t_data *d)
+{
+	init_mlx(d);
+	load_all_textures(d);
+	init_player(d);
+	init_hooks(d);
+	mlx_loop(d->mlx);
 }

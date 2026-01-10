@@ -9,7 +9,7 @@ MLX_PATH = mlx/
 MLX_LIB = $(MLX_PATH)libmlx.a
 
 MLX_FLAGS = -lmlx -L$(MLX_PATH) -lXext -lX11 -lm -lz # for Linux
-#MLX_FLAGS = -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
+# MLX_FLAGS = -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_PATH = libft/
 
