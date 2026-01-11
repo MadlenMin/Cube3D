@@ -16,5 +16,6 @@ void	free_data(t_data *data)
 		free(data->we);
 	if (data->ea)
 		free(data->ea);
-	ft_free(data->map);
+	if (data->map)
+		ft_free(data->map);
 }

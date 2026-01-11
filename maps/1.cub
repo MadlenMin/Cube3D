@@ -1,13 +1,22 @@
 NO ./textures/Grass.xpm
 WE ./textures/Egg.xpm
-SO ./textures/Cow.xpm
-EA ./textures/Chest.xpm
+SO ./textures/cow.xpm
 
 F 100,100,0
+
+
+
+
+
+
+
+
 C 0,0,0
+EA ./textures/Chest.xpm
 
 1111111111
-1W00000001
+1S00000001
 1011111101
-1000000001
-1111111111
+100000000 1
+1         1
+11111111111

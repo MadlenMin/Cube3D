@@ -9,8 +9,10 @@ void	ft_free(char **arr)
 	i = 0;
 	while (arr[i])
 	{
-		free(arr[i]);
+		if (arr[i])
+			free(arr[i]);
 		i++;
 	}
-	free(arr);
+	if (arr)
+		free(arr);
 }
