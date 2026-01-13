@@ -95,6 +95,29 @@ typedef struct s_data
 	double		old_time;
 }		t_data;
 
+typedef struct s_ray
+{
+    double ray_dir_x;
+    double ray_dir_y;
+    double cameraX;
+
+	
+    int map_x;
+    int map_y;
+
+    int step_x;
+    int step_y;
+
+    double side_dist_x;
+    double side_dist_y;
+
+    double delta_dist_x;
+    double delta_dist_y;
+
+    int hit;
+    int side;
+} t_ray;
+
 
 /* Parser */
 int		parse(int fd, t_data *d, int map_started, int cfg);
@@ -132,6 +155,9 @@ void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
 
 /* Rendering */
-void	raycasting(t_data *data);
+void raycasting(t_data *data);
+void calculate_ray_direction(t_data *data, t_ray *ray, int x );
+void init_dda(t_data *data, t_ray *ray);
+void perform_dda(t_data *data, t_ray *ray);
 
 #endif
