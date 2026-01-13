@@ -95,6 +95,7 @@ typedef struct s_data
 	double		old_time;
 }		t_data;
 
+
 /* Parser */
 int		parse(int fd, t_data *d, int map_started, int cfg);
 int		parse_color(int *dst, char *s);
