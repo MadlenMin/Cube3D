@@ -62,7 +62,7 @@ int	render_frame(t_data *data)
 		rotate_left(data);
 	if (data->keys.right)
 		rotate_right(data);
-	//raycasting(data);
+	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
