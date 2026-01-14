@@ -67,11 +67,15 @@ void perform_dda(t_data *data, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if(data->map[ray->map_x][ray->map_y] == '1')
+		if (ray->map_y < 0 || ray->map_x < 0 || !data->map[ray->map_y]
+		    || (int)ft_strlen(data->map[ray->map_y]) <= ray->map_x)
+			return ;
+		if (data->map[ray->map_y][ray->map_x] == '1')
 		{
 			ray->hit = 1;
 			break ; 
 		}
+
 	}
 
 }
