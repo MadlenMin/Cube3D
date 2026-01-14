@@ -4,7 +4,7 @@ SO ./textures/cow.xpm
 EA ./textures/Chest.xpm
 
 F 100,100,0
-C 0,0,0
+C 100,100,0
 
 
 1111

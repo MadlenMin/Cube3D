@@ -6,7 +6,7 @@ void calculate_ray_direction(t_data *data, t_ray *ray, int x )
 	ray->ray_dir_x = data->dir_x + data->plane_x * ray->cameraX;
 	ray->ray_dir_y = data->dir_y + data->plane_y * ray->cameraX;
 }
-double calculate_perpendiculare_wall_distence(t_data *data, t_ray *ray)
+double calculate_perpendiculare_wall_distence(t_ray *ray)
 {
 	double wall_distence;
 	wall_distence = 0;
@@ -75,16 +75,55 @@ void perform_dda(t_data *data, t_ray *ray)
 	}
 
 }
-void project_wall(t_data *data, t_ray *ray, int colum, int wall_distence)
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	double draw_start;
-	double draw_end;
+	char	*dst;
+
+	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+		return;
+	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
+	*(unsigned int*)dst = color;
+}
+
+void project_wall(t_data *data, t_ray *ray, int column, double wall_distence)
+{
+	int draw_start;
+	int draw_end;
 	double wall_hight;
+	int y;
 
-	wall_hight = SCREEN_HEIGHT/wall_distence;
+	y = 0;
+	if (wall_distence <= 0.0)
+		return;
+	wall_hight = (double)SCREEN_HEIGHT / wall_distence;
 
-	draw_start = (SCREEN_HEIGHT / 2) - (wall_hight / 2);
-	draw_end = (SCREEN_HEIGHT / 2) + (wall_hight / 2);
+	draw_start = (int)((SCREEN_HEIGHT / 2) - (wall_hight / 2));
+	if(draw_start < 0)
+		draw_start = 0;
+	draw_end = (int)((SCREEN_HEIGHT / 2) + (wall_hight / 2));
+	if(draw_end >= SCREEN_HEIGHT)
+		draw_end = SCREEN_HEIGHT - 1;
+	while(y < draw_start)
+	{
+		my_mlx_pixel_put(data, column, y, data->ceiling);
+		y++;
+	}
+	int color = 0xFF0000;
+	if(ray->side == 1)
+		color = color/2;
+	y = draw_start;
+	while(y <= draw_end)
+	{
+		my_mlx_pixel_put(data, column, y, color);
+		y++;
+	}
+	y = draw_end + 1;
+	while(y< SCREEN_HEIGHT)
+	{
+		my_mlx_pixel_put(data, column, y, data->floor);
+		y++;
+	}
 }
 
 void raycasting(t_data *data)
@@ -100,7 +139,7 @@ void raycasting(t_data *data)
 		calculate_ray_direction(data, &ray, colum);
 		init_dda(data, &ray);
 		perform_dda(data, &ray);
-		wall_distence = calculate_perpendicular_wall_distence(data, &ray);
+		wall_distence = calculate_perpendiculare_wall_distence(&ray);
 		project_wall(data, &ray, colum, wall_distence);
 		colum++;
 	}
