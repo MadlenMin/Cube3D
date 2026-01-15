@@ -18,6 +18,7 @@ void	init(t_data *data)
 	data->win = NULL;
 	data->img = NULL;
 	data->addr = NULL;
+	data->ray = NULL;
 }
 
 static void	print_data(t_data *d)
