@@ -50,6 +50,43 @@ typedef struct s_texture
 	int			endian;
 }		t_texture;
 
+typedef struct s_ray
+{
+    double ray_dir_x;
+    double ray_dir_y;
+    double cameraX;
+
+	
+    int map_x;
+    int map_y;
+
+    int step_x;
+    int step_y;
+
+    double side_dist_x;
+    double side_dist_y;
+
+    double delta_dist_x;
+    double delta_dist_y;
+
+    int hit;
+    int side;
+} t_ray;
+
+typedef struct s_project
+{
+	int draw_start;
+	int draw_end;
+	double wall_hight;
+	double wall_x;
+	int tex_x;
+	double step;
+	double tex_pos;
+	int tex_idx;
+	int tex_y;
+
+} t_project;
+
 typedef struct s_data
 {
 	char		**map;
@@ -93,30 +130,8 @@ typedef struct s_data
 	t_texture	tex[4];
 
 	double		old_time;
+	t_ray *ray;
 }		t_data;
-
-typedef struct s_ray
-{
-    double ray_dir_x;
-    double ray_dir_y;
-    double cameraX;
-
-	
-    int map_x;
-    int map_y;
-
-    int step_x;
-    int step_y;
-
-    double side_dist_x;
-    double side_dist_y;
-
-    double delta_dist_x;
-    double delta_dist_y;
-
-    int hit;
-    int side;
-} t_ray;
 
 
 /* Parser */
@@ -159,5 +174,6 @@ void raycasting(t_data *data);
 void calculate_ray_direction(t_data *data, t_ray *ray, int x );
 void init_dda(t_data *data, t_ray *ray);
 void perform_dda(t_data *data, t_ray *ray);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

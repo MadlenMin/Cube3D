@@ -25,4 +25,6 @@ void	free_data(t_data *data)
 		free(data->ea);
 	if (data->map)
 		ft_free(data->map);
+	if (data->ray)
+		free(data->ray);
 }

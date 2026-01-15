@@ -21,6 +21,9 @@ static void	init_player(t_data *d)
 	d->move_speed = 0.5;
 	d->rot_speed = 0.5;
 	ft_memset(&d->keys, 0, sizeof(t_keys));
+	d->ray = malloc(sizeof(t_ray));
+	if (!d->ray)
+		exit(1);
 }
 
 void	start(t_data *d)

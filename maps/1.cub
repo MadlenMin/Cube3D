@@ -3,8 +3,8 @@ WE ./textures/Egg.xpm
 SO ./textures/cow.xpm
 EA ./textures/Chest.xpm
 
-F 100,100,0
-C 0,0,0
+F 0, 0, 255
+C 0,0,255
 
 
 1111111111
