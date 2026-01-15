@@ -170,10 +170,21 @@ void	rotate_left(t_data *data);
 void	rotate_right(t_data *data);
 
 /* Rendering */
-void raycasting(t_data *data);
-void calculate_ray_direction(t_data *data, t_ray *ray, int x );
-void init_dda(t_data *data, t_ray *ray);
-void perform_dda(t_data *data, t_ray *ray);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_project	*init_project(t_data *data, t_project *project, t_ray *ray, double wall_distence);
+void		raycasting(t_data *data);
+void		init_dda(t_data *data, t_ray *ray);
+void		perform_dda(t_data *data, t_ray *ray);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		calculate_step_and_side(t_data *data, t_ray *ray);
+double		calculate_wallX(t_data *data, t_ray *ray, double wall_distence);
+void		calculate_ray_direction(t_data *data, t_ray *ray, int x );
+void		init_dda(t_data *data, t_ray *ray);
+void		perform_dda(t_data *data, t_ray *ray);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int			get_tex_index(t_ray *ray);
+void		draw_wall(t_data *data, t_project *project, int column, int y);
+void		project_wall(t_data *data, t_ray *ray, int column, double wall_distence);
+void		raycasting(t_data *data);
+double		calculate_perpendiculare_wall_distence(t_ray *ray);
 
 #endif

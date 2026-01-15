@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mminasya <mminasya@student.42yerevan.am    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/15 21:06:28 by mminasya          #+#    #+#             */
+/*   Updated: 2026/01/15 21:19:44 by mminasya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../cub3d.h"
 
-void raycasting(t_data *data)
+void	raycasting(t_data *data)
 {
-	int colum;
-	double wall_distence;
+	int		colum;
+	double	wall_distence;
 
 	wall_distence = 0.0;
 	colum = 0;
