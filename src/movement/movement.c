@@ -7,10 +7,13 @@ void	move_forward(t_data *data)
 
 	new_x = data->pos_x + data->dir_x * data->move_speed * 0.1;
 	new_y = data->pos_y + data->dir_y * data->move_speed * 0.1;
-	if (data->map[(int)data->pos_y][(int)new_x] == '0')
-		data->pos_x = new_x;
-	if (data->map[(int)new_y][(int)data->pos_x] == '0')
-		data->pos_y = new_y;
+	if(data->map[(int)new_y][(int)new_x] != '1')
+	{
+		if (data->map[(int)data->pos_y][(int)new_x] == '0')
+			data->pos_x = new_x;
+		if (data->map[(int)new_y][(int)data->pos_x] == '0')
+			data->pos_y = new_y;
+	}
 }
 
 void	move_backward(t_data *data)
