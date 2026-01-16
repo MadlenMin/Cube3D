@@ -14,6 +14,8 @@ void	free_data(t_data *data)
 			mlx_destroy_image(data->mlx, data->img);
 		if (data->win)
 			mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
 	}
 	if (data->no)
 		free(data->no);

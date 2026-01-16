@@ -65,4 +65,5 @@ int	parse(int fd, t_data *d, int map_started, int cfg)
 	if (cfg < 6 || !d->map)
 		return (free(l), err("Missing data"));
 	return (free(l), validate_map(d));
+	
 }

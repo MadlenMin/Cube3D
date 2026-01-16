@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 	init(&data);
 	if (parse(fd, &data, 0, 0))
 		return (free_data(&data), close(fd), 1);
+	fill_map_spaces(data.map, 0, 0, 0);
 	close(fd);
 	print_data(&data);
 	start(&data);

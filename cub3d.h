@@ -144,6 +144,7 @@ int		is_map_char(char c);
 int		is_map_line(char *l);
 void	trim_nl(char *s);
 int		err(char *msg);
+void	fill_map_spaces(char **map, int x, int y, int max_width);
 
 /* Utils */
 void	ft_free(char **arr);

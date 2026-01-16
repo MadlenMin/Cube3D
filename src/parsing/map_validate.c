@@ -1,6 +1,6 @@
 #include "../../cub3d.h"
 
-static void	fill_map_spaces(char **map, int x, int y, int max_width)
+void	fill_map_spaces(char **map, int x, int y, int max_width)
 {
 	int	width;
 

@@ -6,7 +6,7 @@
 /*   By: mminasya <mminasya@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 21:05:50 by mminasya          #+#    #+#             */
-/*   Updated: 2026/01/15 21:18:55 by mminasya         ###   ########.fr       */
+/*   Updated: 2026/01/16 22:26:31 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	draw_wall(t_data *data, t_project *project, int column, int y)
 {
-	unsigned int color;
-
+	double color;
+	
 	project->tex_y = (int)project->tex_pos & (TEXTURE_HEIGHT - 1); //?
 	project->tex_pos += project->step;
 	color = data->tex[project->tex_idx].addr[TEXTURE_HEIGHT * project->tex_y + project->tex_x];
-	if (data->ray->side == 1)
-		color = (color >> 1) & 8355711; //?
+	//if (data->ray->side == 1)
+	//	color = (color >> 1) & 8355711; //?
+	if(data->ray->side == 1)
+		color = color - 0.5;
 	my_mlx_pixel_put(data, column, y, color);
 }
 
