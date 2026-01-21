@@ -14,12 +14,12 @@
 
 void	calculate_step_and_side(t_data *data, t_ray *ray)
 {
-	if (ray->ray_dir_x > 0 ) //moving right 
+	if (ray->ray_dir_x > 0)
 	{
 		ray->side_dist_x = (ray->map_x + 1 - data->pos_x) * ray->delta_dist_x;
 		ray->step_x = 1;
 	}
-	else //moving left 
+	else
 	{
 		ray->side_dist_x = (data->pos_x - ray->map_x) * ray->delta_dist_x;
 		ray->step_x = -1;
@@ -36,7 +36,7 @@ void	calculate_step_and_side(t_data *data, t_ray *ray)
 	}
 }
 
-double	calculate_wallX(t_data *data, t_ray *ray, double wall_distence)
+double	calculate_wallx(t_data *data, t_ray *ray, double wall_distence)
 {
 	double	wall_x;
 
@@ -50,9 +50,9 @@ double	calculate_wallX(t_data *data, t_ray *ray, double wall_distence)
 
 void	calculate_ray_direction(t_data *data, t_ray *ray, int x )
 {
-	ray->cameraX = 2 * x / (double)SCREEN_WIDTH - 1;
-	ray->ray_dir_x = data->dir_x + data->plane_x * ray->cameraX;
-	ray->ray_dir_y = data->dir_y + data->plane_y * ray->cameraX;
+	ray->camerax = 2 * x / (double)SCREEN_WIDTH - 1;
+	ray->ray_dir_x = data->dir_x + data->plane_x * ray->camerax;
+	ray->ray_dir_y = data->dir_y + data->plane_y * ray->camerax;
 }
 
 double	calculate_perpendiculare_wall_distence(t_ray *ray)

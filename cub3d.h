@@ -52,40 +52,38 @@ typedef struct s_texture
 
 typedef struct s_ray
 {
-    double ray_dir_x;
-    double ray_dir_y;
-    double cameraX;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	camerax;
 
-	
-    int map_x;
-    int map_y;
+	int		map_x;
+	int		map_y;
 
-    int step_x;
-    int step_y;
+	int		step_x;
+	int		step_y;
 
-    double side_dist_x;
-    double side_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
 
-    double delta_dist_x;
-    double delta_dist_y;
-
-    int hit;
-    int side;
-} t_ray;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		hit;
+	int		side;
+}		t_ray;
 
 typedef struct s_project
 {
-	int draw_start;
-	int draw_end;
-	double wall_hight;
-	double wall_x;
-	int tex_x;
-	double step;
-	double tex_pos;
-	int tex_idx;
-	int tex_y;
+	int		draw_start;
+	int		draw_end;
+	double	wall_hight;
+	double	wall_x;
+	int		tex_x;
+	double	step;
+	double	tex_pos;
+	int		tex_idx;
+	int		tex_y;
 
-} t_project;
+}		t_project;
 
 typedef struct s_data
 {
@@ -130,62 +128,63 @@ typedef struct s_data
 	t_texture	tex[4];
 
 	double		old_time;
-	t_ray *ray;
+	t_ray		*ray;
 }		t_data;
 
-
 /* Parser */
-int		parse(int fd, t_data *d, int map_started, int cfg);
-int		parse_color(int *dst, char *s);
-int		parse_tex(char **dst, char *s);
-char	**map_add(char **m, char *l);
-int		validate_map(t_data *d);
-int		is_map_char(char c);
-int		is_map_line(char *l);
-void	trim_nl(char *s);
-int		err(char *msg);
-void	fill_map_spaces(char **map, int x, int y, int max_width);
+int			parse(int fd, t_data *d, int map_started, int cfg);
+int			parse_color(int *dst, char *s);
+int			parse_tex(char **dst, char *s);
+char		**map_add(char **m, char *l);
+int			validate_map(t_data *d);
+int			is_map_char(char c);
+int			is_map_line(char *l);
+void		trim_nl(char *s);
+int			err(char *msg);
+int			fill_map_spaces(char ***map_ptr);
 
 /* Utils */
-void	ft_free(char **arr);
-char	**ft_dup_split(char **map);
-void	free_data(t_data *data);
+void		ft_free(char **arr);
+char		**ft_dup_split(char **map);
+void		free_data(t_data *data);
 
 /* MLX / Game */
-void	start(t_data *data);
-void	init(t_data *data);
-void	load_all_textures(t_data *data);
-void	init_hooks(t_data *data);
-int		key_press(int keycode, t_data *data);
-int		key_release(int keycode, t_data *data);
-int		close_window(t_data *data);
-int		render_frame(t_data *data);
-void	assign_direction(t_data *d);
+void		start(t_data *data);
+void		init(t_data *data);
+void		load_all_textures(t_data *data);
+void		init_hooks(t_data *data);
+int			key_press(int keycode, t_data *data);
+int			key_release(int keycode, t_data *data);
+int			close_window(t_data *data);
+int			render_frame(t_data *data);
+void		assign_direction(t_data *d);
 
 /* Movement */
-void	move_forward(t_data *data);
-void	move_backward(t_data *data);
-void	move_left(t_data *data);
-void	move_right(t_data *data);
-void	rotate_left(t_data *data);
-void	rotate_right(t_data *data);
+void		move_forward(t_data *data);
+void		move_backward(t_data *data);
+void		move_left(t_data *data);
+void		move_right(t_data *data);
+void		rotate_left(t_data *data);
+void		rotate_right(t_data *data);
 
 /* Rendering */
-t_project	*init_project(t_data *data, t_project *project, t_ray *ray, double wall_distence);
 void		raycasting(t_data *data);
 void		init_dda(t_data *data, t_ray *ray);
 void		perform_dda(t_data *data, t_ray *ray);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		calculate_step_and_side(t_data *data, t_ray *ray);
-double		calculate_wallX(t_data *data, t_ray *ray, double wall_distence);
+double		calculate_wallx(t_data *data, t_ray *ray, double wall_distence);
 void		calculate_ray_direction(t_data *data, t_ray *ray, int x );
 void		init_dda(t_data *data, t_ray *ray);
 void		perform_dda(t_data *data, t_ray *ray);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			get_tex_index(t_ray *ray);
 void		draw_wall(t_data *data, t_project *project, int column, int y);
-void		project_wall(t_data *data, t_ray *ray, int column, double wall_distence);
+void		project_wall(t_data *data, t_ray *ray, int column,
+				double wall_distence);
 void		raycasting(t_data *data);
 double		calculate_perpendiculare_wall_distence(t_ray *ray);
+t_project	*init_project(t_data *data,
+				t_project *project, t_ray *ray, double wall_distence);
 
 #endif

@@ -16,7 +16,7 @@ static void	init_player(t_data *d)
 {
 	d->pos_x = d->px + 0.5;
 	d->pos_y = d->py + 0.5;
-	d->map[d->py][d->px] = '0';//playerin 0 acrec 
+	d->map[d->py][d->px] = '0';
 	assign_direction(d);
 	d->move_speed = 0.5;
 	d->rot_speed = 0.5;

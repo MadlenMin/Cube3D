@@ -1,5 +1,21 @@
 #include "../../cub3d.h"
 
+static void	free_data_2(t_data *data)
+{
+	if (data->no)
+		free(data->no);
+	if (data->so)
+		free(data->so);
+	if (data->we)
+		free(data->we);
+	if (data->ea)
+		free(data->ea);
+	if (data->map)
+		ft_free(data->map);
+	if (data->ray)
+		free(data->ray);
+}
+
 void	free_data(t_data *data)
 {
 	int	i;
@@ -17,16 +33,5 @@ void	free_data(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	if (data->no)
-		free(data->no);
-	if (data->so)
-		free(data->so);
-	if (data->we)
-		free(data->we);
-	if (data->ea)
-		free(data->ea);
-	if (data->map)
-		ft_free(data->map);
-	if (data->ray)
-		free(data->ray);
+	free_data_2(data);
 }

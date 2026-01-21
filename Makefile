@@ -17,7 +17,27 @@ GNL_PATH = get_next_line/
 
 LIBFT_LIB = $(LIBFT_PATH)libft.a
 
-CFILES = main.c $(wildcard src/*/*.c) # POXEL --------------------------------------------------
+CFILES = main.c                        \
+		 src/free/free.c               \
+		 src/game/textures.c           \
+		 src/parsing/map_v_utils.c     \
+		 src/parsing/parse_map.c       \
+		 src/ray_casting/dda.c         \
+		 src/free/free_data.c          \
+		 src/hook/hook.c               \
+		 src/parsing/map_validate.c    \
+		 src/parsing/parse_texture.c   \
+		 src/ray_casting/helper.c      \
+		 src/game/directions.c         \
+		 src/movement/movement.c       \
+		 src/parsing/parse_color.c     \
+		 src/parsing/parse_utils.c     \
+		 src/ray_casting/put_wall.c    \
+		 src/game/start.c              \
+		 src/movement/rotate.c         \
+		 src/parsing/parse_file.c      \
+		 src/ray_casting/calculs.c     \
+		 src/ray_casting/raycasting.c  
 
 GNL_FILES = $(GNL_PATH)get_next_line.c $(GNL_PATH)get_next_line_utils.c
 

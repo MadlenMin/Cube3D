@@ -1,34 +1,5 @@
 #include "../../cub3d.h"
 
-void	fill_map_spaces(char **map, int x, int y, int max_width)
-{
-	int	width;
-
-	while (map[y])
-	{
-		width = ft_strlen(map[y]);
-		if (width > max_width)
-			max_width = width;
-		y++;
-	}
-	y = 0;
-	while (map[y])
-	{
-		width = ft_strlen(map[y]);
-		x = 0;
-		while (x < width)
-		{
-			if (map[y][x] == ' ')
-				map[y][x] = '0';
-			x++;
-		}
-		while (x < max_width)
-			map[y][x++] = '0';
-		map[y][max_width] = '\0';
-		y++;
-	}
-}
-
 static int	check_player(t_data *d)
 {
 	int	x;
@@ -113,10 +84,11 @@ int	validate_map(t_data *d)
 		return (1);
 	if (check_player(d))
 		return (1);
+	if (fill_map_spaces(&d->map))
+		return (err("Error\nMemory Error\n"));
 	cpy = ft_dup_split(d->map);
 	if (!cpy)
 		return (err("Memory error"));
-	fill_map_spaces(cpy, 0, 0, 0);
 	if (flood(cpy, d->px, d->py, height))
 	{
 		ft_free(cpy);
